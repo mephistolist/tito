@@ -17,7 +17,7 @@
 
 // Define the expected sequence of packet types
 #define EXPECTED_SEQUENCE_SIZE 3
-const char *EXPECTED_SEQUENCE[EXPECTED_SEQUENCE_SIZE] = {"1234", "5678", "abcd"};
+const char *EXPECTED_SEQUENCE[EXPECTED_SEQUENCE_SIZE] = {"nqXCT2xfFsvYktHG3d8gPV", "VqhEGfaeFTdSmUW7M4QkNz", "VXjdmp4QcBtH75S2Yf8gPx"};
 const int INTERVALS[EXPECTED_SEQUENCE_SIZE] = {1, 2, 3}; // Intervals in seconds
 
 jmp_buf jump_buffer;
@@ -25,13 +25,6 @@ jmp_buf jump_buffer;
 void error(char *message) {
     perror(message);
     exit(EXIT_FAILURE);
-}
-
-/* Handle signal errors to reduce variations in error codes. */
-void segfault_handler(int signal) {
-    (void)signal;  // Silence the unused parameter warning
-    //fprintf(stderr, "Segmentation fault or illegal instruction. Exiting...\n");
-    longjmp(jump_buffer, 1);
 }
 
 void foo() {
@@ -46,55 +39,6 @@ void foo() {
     fclose(fout);
 
     printf("Random: %llx\n", q);
-}
-
-int change_page_permissions_of_address(void *addr) {
-    int page_size = sysconf(_SC_PAGESIZE);
-    addr -= (unsigned long)addr % page_size;
-
-    if (mprotect(addr, page_size, PROT_READ | PROT_WRITE | PROT_EXEC) == -1) {
-        fprintf(stderr, "Error while changing page permissions of foo(): %s (errno: %d)\n", strerror(errno), errno);
-        return -1;
-    }
-
-    return 0;
-}
-
-int mutate() {
-    // Register a custom signal handler for SIGILL
-    if (signal(SIGILL, segfault_handler) == SIG_ERR) {
-        fprintf(stderr, "Failed to register signal handler\n");
-        exit(EXIT_FAILURE);
-    }
-
-    void *foo_addr = (void *)foo;
-
-    if (change_page_permissions_of_address(foo_addr) == -1) {
-        exit(EXIT_FAILURE);
-    }
-
-    // Set up the jump buffer
-    if (setjmp(jump_buffer) == 0) {
-        /* Call the unmodified foo() */
-        /*puts("Calling unmodified foo...");
-        foo();*/
-
-        // Randomly choose an offset within the function to modify
-        int random_offset = rand() % 50;  // Adjust the range as needed
-
-        // Change the immediate value in the instruction at the random offset to a random value.
-        unsigned char *instruction = (unsigned char *)foo_addr + random_offset;
-        *instruction = rand() % 256;  // Change to a random byte value
-
-        /* Call the modified foo() */
-        //puts("Calling modified foo...");
-        foo();
-    } else {
-        // Handle segmentation fault
-        exit(EXIT_FAILURE);
-    }
-
-    return 0;
 }
 
 void perform_action() {
@@ -182,8 +126,6 @@ int main() {
             perror("Accept failed");
             exit(1);
         }
-
-	mutate();
 
         char buffer[1024];
         ssize_t bytesRead = recv(clientSocket, buffer, sizeof(buffer) - 1, 0);
