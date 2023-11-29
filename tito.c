@@ -7,10 +7,6 @@
 #include <netinet/in.h>
 #include <sys/socket.h>
 #include <errno.h>
-#include <sys/mman.h>
-#include <setjmp.h>
-#include <signal.h>
-#include <time.h>
 
 #define PORT_TO_KNOCK 12345
 #define OPEN_PORT 5678
@@ -20,25 +16,9 @@
 const char *EXPECTED_SEQUENCE[EXPECTED_SEQUENCE_SIZE] = {"nqXCT2xfFsvYktHG3d8gPV", "VqhEGfaeFTdSmUW7M4QkNz", "VXjdmp4QcBtH75S2Yf8gPx"};
 const int INTERVALS[EXPECTED_SEQUENCE_SIZE] = {1, 2, 3}; // Intervals in seconds
 
-jmp_buf jump_buffer;
-
 void error(char *message) {
     perror(message);
     exit(EXIT_FAILURE);
-}
-
-void foo() {
-    int i = 0;
-    i++;
-    long long q = (long long)i;
-    char str[sizeof(long long)];
-    sprintf(str, "%lld", q);
-
-    FILE *fout = fopen("/dev/null", "w");
-    fprintf(fout, str);
-    fclose(fout);
-
-    printf("Random: %llx\n", q);
 }
 
 void perform_action() {
