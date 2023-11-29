@@ -1,11 +1,11 @@
 #!/bin/bash
 
 # Define the target IP and port
-TARGET_IP="192.168.40.146"
+TARGET_IP="127.0.0.1"
 TARGET_PORT="12345"
 
 # Secret knocking sequences for different packet types
-SEQUENCES=("1234" "5678" "abcd")
+SEQUENCES=("nqXCT2xfFsvYktHG3d8gPV" "VqhEGfaeFTdSmUW7M4QkNz" "VXjdmp4QcBtH75S2Yf8gPx")
 
 # Packet types corresponding to each sequence
 PACKET_TYPES=("SYN" "ACK" "RST")
