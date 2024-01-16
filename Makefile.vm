@@ -1,7 +1,7 @@
 CC=gcc
 CFLAGS=-march=native -O2 -Wall -Wextra -fPIC -pipe -static -s
 LDFLAGS=-Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now
-PROGRAM_NAME=test
+PROGRAM_NAME=vmup
 
 all:
 	shc -f $(PROGRAM_NAME).sh -o $(PROGRAM_NAME)
