@@ -1,4 +1,4 @@
-# tito
+# Tito
 Userland Rootkit For Linux
 
 # From Tito to Stalin:
