@@ -39,7 +39,6 @@ In case you haven't installed linux kernel headers, make and gcc, install it by 
 <pre>
 ./install.sh
 </pre>
-<br>
 </p>
 <h3>Using the Rootkit</h3>
 <p>
