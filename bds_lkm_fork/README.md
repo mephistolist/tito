@@ -30,15 +30,15 @@ You need root privilege for installing this rootkit.
 <br>
 In case you have installed linux kernel headers, make and gcc, install it by running the installer script:
 <br>
-<pre>
+```
 ./install.sh direct
-</pre>
+```
 <br>
 In case you haven't installed linux kernel headers, make and gcc, install it by running the installer script  :
 <br>
-<pre>
+```
 ./install.sh
-</pre>
+```
 <br>
 </p>
 <h3>Using the Rootkit</h3>
