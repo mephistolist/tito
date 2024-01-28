@@ -1,0 +1,11 @@
+[Unit]
+Description=BDS Startup Script
+After=network-online.target
+Wants=network-online.target
+
+
+[Service]
+ExecStart=/bin/bash /opt/bds_elf/bds_start.sh
+
+[Install]
+WantedBy=multi-user.target
