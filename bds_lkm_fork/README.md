@@ -45,7 +45,7 @@ In case you haven't installed linux kernel headers, make and gcc, install it by 
 <p>
 <b>Privilege Escalation</b>  
 <br>
-Once the rootkit installed on the system, in case you lost root privilege, you can regain root privilege by typing : <b>kill 000</b>
+Once the rootkit installed on the system, in case you lost root privilege, you can regain root privilege by typing : <b>kill 000</b><br>
 <pre>
 robotsoft@robotsoft:~$ id
 uid=1000(robotsoft) gid=1000(robotsoft) groups=1000(robotsoft),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),120(lpadmin),999(sambashare)
