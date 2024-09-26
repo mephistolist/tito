@@ -1,0 +1,5 @@
+clang -O2 -target bpf -c port_hider_kern.c -o port_hider_kern.o
+
+gcc port_loader_kern.c -o port_loader_kern -lbpf
+
+./port_hider_loader
