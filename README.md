@@ -1,5 +1,5 @@
 # Tito
-Userland Rootkit For Linux
+An In-Memory Rootkit For Linux
 
 # From Tito to Stalin
 
