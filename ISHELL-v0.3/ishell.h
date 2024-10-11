@@ -1,6 +1,7 @@
 /* ISHELL: header
  * by: Peter Kieltyka (elux)
- * http://peter.eluks.com / peter@eluks.com */
+ * http://peter.eluks.com / peter@eluks.com 
+ * Updates from 0.2 by Mephistolist */
 #ifndef __i_shell_h
 #define __i_shell_h
 
