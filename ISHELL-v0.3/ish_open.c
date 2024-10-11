@@ -1,6 +1,7 @@
 /* ISHELL: command execution functions
  * by: Peter Kieltyka (elux)
  * http://peter.eluks.com / peter@eluks.com
+ * Updates from 0.2 by Mephistolist
  * Note: The functions below are derived from code bighawk
  * previously wrote as a substitute for popen(). */
 #include "ishell.h"
