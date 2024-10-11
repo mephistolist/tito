@@ -1,7 +1,7 @@
 /* ISHELL: client
  * by: Peter Kieltyka (elux)
  * http://peter.eluks.com / peter@eluks.com 
-   Updates from 0.2 by Mephistolist */
+ * Updates from 0.2 by Mephistolist */
 
 #include "ishell.h"
 
