@@ -1,0 +1,11 @@
+Jan. 31. 2002   Peter Kieltyka <peter@eluks.com>
+
+	* Fixed a compiling problem that was encountered on some Solaris machines
+	* Changed AF_LOCAL to AF_UNIX in ish_open functions
+	* Rearranged headers in ishell.h
+	* Changed u_intXX_t variables to uintXX_t
+
+Oct. 15. 2024   Mephistolist
+
+  * Fixed warnings when compiling for Linux
+  * Added ptrace for anti-debugging
