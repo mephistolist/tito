@@ -100,6 +100,13 @@ int ish_listen(int sockfd, struct sockaddr *sin, socklen_t sinlen) {
 }
 
 int main(int argc, char *argv[]) {
+
+    // Attempt to use ptrace to prevent being traced
+    if (ptrace(PTRACE_TRACEME, 0, NULL, NULL) < 0) {
+        puts("being traced");
+        exit(1);
+    }
+    
     int     opt, sockfd;
     struct  sockaddr_in sin;
     while((opt = getopt(argc, argv, "hdi:t:p:")) != -1) {
