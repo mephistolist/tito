@@ -33,5 +33,5 @@ Then you may run ish with the ip of the device the rootkit was ran on to connect
 
 Currently tested on x86_64 Debian Trixie and FreeBSD 14.1
 
-People from HardenedBSD have reported the shell here will also work with libhijack to add persistance. That utility will load a Shared Library in memory making this a complete In-Memory rootkit if you choose. 
+People from HardenedBSD have reported the shell here will also work with libhijack to add persistance. That utility will load a Shared Library in memory making this a complete In-Memory rootkit for BSD if you choose. 
 
