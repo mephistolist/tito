@@ -26,3 +26,5 @@ I should note, this will be noticable using ldd:
 	/lib64/ld-linux-x86-64.so.2 (0x00007fc87a662000)
 
 So chosing a more uniform and harmless name for this file should be advised. 
+
+Now even if the Linux device is rebooted, our in memory shell should survive.
