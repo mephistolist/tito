@@ -1,5 +1,5 @@
 # Tito
-An In-Memory Rootkit For Linux
+A complete In-Memory Rootkit For FreeBSD. On Linux the shell is completely in memory with optional on-disk persistance using ld.so.preload.  
 
 <h2>From Tito to Stalin:</h2>
 
@@ -35,3 +35,4 @@ Currently tested on x86_64 Debian Trixie and FreeBSD 14.1
 
 People from HardenedBSD have reported the shell here will also work with libhijack to add persistance. That utility will load a Shared Library in memory making this a complete In-Memory rootkit for BSD if you choose. 
 
+Previously I did not include persistance with Linux as 1. - Persistance would require writing to disk and 2. - Many servers remain us thousands of days without a reboot making it pointless. In the optional-persistnace you may find an additional README file to deploy this feature if you choose.
