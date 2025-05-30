@@ -1,5 +1,5 @@
 # Tito
-A complete In-Memory Rootkit For FreeBSD. On Linux the shell is completely in memory with optional on-disk persistance using ld.so.preload.  
+A complete In-Memory Rootkit For FreeBSD. On Linux the shell is completely in memory with optional on-disk persistance using an injected library.  
 
 <h2>From Tito to Stalin:</h2>
 
