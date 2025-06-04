@@ -6,7 +6,7 @@ A complete In-Memory Rootkit For FreeBSD. On Linux the shell is completely in me
 "Stop sending people to kill me. We’ve already captured five of them, one of them with a bomb and another with a rifle. If you don’t stop sending killers, I’ll send one to Moscow, and I won’t have to send a second."
 
 <center>
-<img src="https://en.wikipedia.org/wiki/Josip_Broz_Tito#/media/File:Josip_Broz_Tito_uniform_portrait.jpg"></center>
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Josip_Broz_Tito_uniform_portrait.jpg/1280px-Josip_Broz_Tito_uniform_portrait.jpg"></center>
 
 You can run the entire rootkit from the Linux command-line like so:
 
