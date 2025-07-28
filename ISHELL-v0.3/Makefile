@@ -1,5 +1,5 @@
 CC = cc
-CFLAGS1 = -march=native -O2 -Wall -Wextra -fPIC -pipe -static -s
+CFLAGS1 = -march=native -O2 -Wall -Wextra -fPIC -pipe -s
 CFLAGS2 = -O2 -Wall -lsocket
 STRIP = strip
 
